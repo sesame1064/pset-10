@@ -1,21 +1,29 @@
 package pak;
-import com.google.gson.*;
-import java.util.ArrayList;
-import java.io.*;
 
 public class dictionary {
 	
-	@SuppressWarnings("rawtypes")
-	public static ArrayList[] wordList;
+	private String def; //definition
+	private String speech; //part of speech
 	
-	public static void allWords() throws JsonSyntaxException, JsonIOException, FileNotFoundException {
-		wordList = new Gson().fromJson(new FileReader("words.json"), ArrayList[]);
+	public void Definitions(String definition, String speech) {
+		this.def = def;
+		this.speech = speech;
 	}
-    public static ArrayList<String> listWords() {
-        ArrayList<String> listOfWords = new ArrayList<String>();
-        for(ArrayList[] word : wordList) {
-            listOfWords.add(word.getSpelling());
-        }
-        return listOfWords;
-    }
+	
+	public void setDef(String definition) {
+		this.def = def;
+	}
+	
+	public String getDef() {
+		return this.def;
+	}
+	
+	public void setSpeech(String speech) {
+		this.speech = speech;
+	}
+	
+	public String getSpeech() {
+		return this.speech;
+	}
+
 }
