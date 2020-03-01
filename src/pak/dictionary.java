@@ -2,28 +2,27 @@ package pak;
 
 public class dictionary {
 	
-	private String def; //definition
-	private String speech; //part of speech
-	
-	public void Definitions(String definition, String speech) {
-		this.def = def;
-		this.speech = speech;
-	}
-	
-	public void setDef(String definition) {
-		this.def = def;
-	}
-	
-	public String getDef() {
-		return this.def;
-	}
-	
-	public void setSpeech(String speech) {
-		this.speech = speech;
-	}
-	
-	public String getSpeech() {
-		return this.speech;
-	}
+//	private String definition; 
+//	private String partOfSpeech; 
+//	
+//	public void definitioninitions(String definitioninition, String partOfSpeech) {
+//		this.definition = definition;
+//		this.partOfSpeech = partOfSpeech;
+//	}
+//	public void setdefinition(String definitioninition) {
+//		this.definition = definition;
+//	}
+//	
+//	public String getdefinition() {
+//		return this.definition;
+//	}
+//	
+//	public void setpartOfSpeech(String partOfSpeech) {
+//		this.partOfSpeech = partOfSpeech;
+//	}
+//	
+//	public String getpartOfSpeech() {
+//		return this.partOfSpeech;
+//	}
 
 }

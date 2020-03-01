@@ -7,7 +7,7 @@ import pak.dictionary;
 public class Main {
 	
 	public static void main(String[] args) {
-		private wordList = dictionary.allWords();
-		System.out.println("hello" + wordList );
+//		private wordList = dictionary.allWords();
+//		System.out.println("hello" + wordList );
 	}
 }
