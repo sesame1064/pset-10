@@ -1,28 +1,17 @@
 package pak;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import com.google.gson.*;
+
+
 public class dictionary {
+	public static Words[] wordList;
 	
-//	private String definition; 
-//	private String partOfSpeech; 
-//	
-//	public void definitioninitions(String definitioninition, String partOfSpeech) {
-//		this.definition = definition;
-//		this.partOfSpeech = partOfSpeech;
-//	}
-//	public void setdefinition(String definitioninition) {
-//		this.definition = definition;
-//	}
-//	
-//	public String getdefinition() {
-//		return this.definition;
-//	}
-//	
-//	public void setpartOfSpeech(String partOfSpeech) {
-//		this.partOfSpeech = partOfSpeech;
-//	}
-//	
-//	public String getpartOfSpeech() {
-//		return this.partOfSpeech;
-//	}
+	public static Words[] addAllWords() throws JsonSyntaxException, JsonIOException, FileNotFoundException {
+		wordList = new Gson().fromJson(new FileReader(".\\Json\\words.json"), words[].class);
+		return wordList;
+	}
 
 }
