@@ -1,4 +1,8 @@
 package pak;
+import pak.words;
+import pak.definitions;
+import pak.dictionary;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

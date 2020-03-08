@@ -1,15 +1,12 @@
 package pak;
 
-import java.io.*;
-import com.google.gson.*;
-
-public class definitions {
+public class Definitions {
 	private String definition;
 	private String partOfSpeech;
 	
-	public void definitions(String definition, String partsOfSpeech) {
+	public void definitions(String definition, String partOfSpeech) {
 		this.definition = definition;
-		this.partOfSpeech = partsOfSpeech;
+		this.partOfSpeech = partOfSpeech;
 	}
 
 	public String getDefinition() {
