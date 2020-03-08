@@ -25,7 +25,23 @@ public class Words {
 		return this.definitions;
 	}
 	
+	public void setDefinitios(Definitions[] definitions) {
+		this.definitions = definitions;
+	}
 	
+	public String[] getSynonyms() {
+		return this.synonyms;
+	}
 	
+	public void setSynonyms(String[] synonyms) {
+		this.synonyms = synonyms;
+	}
 	
+	public String[] getAntonyms() {
+		return this.antonyms;
+	}
+	
+	public void setAntonyms() {
+		this.antonyms = antonyms;
+	}
 }
