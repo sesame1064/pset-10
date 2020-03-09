@@ -12,7 +12,16 @@ public class Definitions {
 	public String getDefinition() {
 		return this.definition;
 	}
+	
+	public void setDefintions(String definition) {
+		this.definition = definition;
+	}
+	
 	public String getPartOfSpeech() {
 		return this.partOfSpeech;
+	}
+	
+	public void setPartOfSpeech(String partOfSpeech) {
+		this.partOfSpeech = partOfSpeech;
 	}
 }
