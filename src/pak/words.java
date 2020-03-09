@@ -41,7 +41,7 @@ public class Words {
 		return this.antonyms;
 	}
 	
-	public void setAntonyms() {
+	public void setAntonyms(String[] antonyms) {
 		this.antonyms = antonyms;
 	}
 }
