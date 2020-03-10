@@ -12,12 +12,15 @@ import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 import javax.swing.JRadioButton;
 import javax.swing.JEditorPane;
 import com.google.gson.Gson;
 import pak.Utils;
 import java.awt.ScrollPane;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class Dictionary {
 
@@ -54,7 +57,19 @@ public class Dictionary {
        ;
         return  Utils.sortWordsAsc(listOfWords);
 	}
-
+	 @SuppressWarnings("unused")
+	private static ArrayList<Words> getWordClass() throws FileNotFoundException{
+		    Gson gson = new Gson();
+		        String classpathDirectory = Utils.getClasspathDir();
+		        BufferedReader br = new BufferedReader(new FileReader(classpathDirectory + "words.json"));
+		        Words[] words = gson.fromJson(br, Words[].class);
+		        ArrayList<Words> listOfWords = new ArrayList<Words>();
+		        for (Words word : words) {
+		          listOfWords.add(word);
+		        }
+		       ;
+		        return listOfWords;
+		  }
 	/**
 	 * Create the application.
 	 */
@@ -96,10 +111,65 @@ public class Dictionary {
 		JRadioButton rdbtnAsc = new JRadioButton("Asc");
 		rdbtnAsc.setBounds(20, 83, 63, 23);
 		frmDictionary.getContentPane().add(rdbtnAsc);
+		rdbtnAsc.setSelected(true);
 		
 		JRadioButton rdbtnDesc = new JRadioButton("Desc");
 		rdbtnDesc.setBounds(85, 83, 109, 23);
 		frmDictionary.getContentPane().add(rdbtnDesc);
+		rdbtnDesc.addItemListener(new ItemListener() {
+
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				// TODO Auto-generated method stub
+	            int state = event.getStateChange();
+	            if (state == ItemEvent.SELECTED) {
+	                System.out.println("desc");
+	                try {
+	                  txtSearch.setText("");
+	            list.setModel(Utils.reverseOrder(getWords()));
+	            doc.remove(0, doc.getLength());
+	            doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+	              doc.insertString(doc.getLength(),"\n" , null );
+	              doc.insertString(doc.getLength(),"Definitions\n" ,header );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"1. Example Word (pos) \n\n    Definition of example word\n\n" ,null );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"Synonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Synonym " ,null );
+	              doc.insertString(doc.getLength(),"\n\n" ,null );
+	              doc.insertString(doc.getLength(),"Antonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Antonym " ,null );
+	          } catch (FileNotFoundException | BadLocationException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	          }
+
+	            } else if (state == ItemEvent.DESELECTED) {
+	              System.out.println("asc");
+	              try {
+	                txtSearch.setText("");
+	            list.setModel(getWords());
+	            doc.remove(0, doc.getLength());
+	            doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+	              doc.insertString(doc.getLength(),"\n" , null );
+	              doc.insertString(doc.getLength(),"Definitions\n" ,header );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"1. Example Word (pos) \n\n    Definition of example word\n\n" ,null );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"Synonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Synonym " ,null );
+	              doc.insertString(doc.getLength(),"\n\n" ,null );
+	              doc.insertString(doc.getLength(),"Antonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Antonym " ,null );
+	          } catch (FileNotFoundException | BadLocationException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	          }
+	            }
+
+			}
+			
+		});
 		
 		JEditorPane editorPane = new JEditorPane();
 		editorPane.setBounds(218, 11, 412, 458);
