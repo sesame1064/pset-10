@@ -102,14 +102,47 @@ public class Dictionary {
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws BadLocationException 
 	 */
-	private void initialize() {
+	private void initialize() throws BadLocationException {
 		 frmDictionary = new JFrame();
 		 frmDictionary.setResizable(false);
 		 frmDictionary.setTitle("Dictionary");
 		 frmDictionary.setBounds(100, 100, 800, 600);
 		 frmDictionary.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		 frmDictionary.getContentPane().setLayout(null);
+		 
+		 JScrollPane scrollPane_2 = new JScrollPane();
+		 scrollPane_2.setBounds(207, 11, 566, 549);
+		 frmDictionary.getContentPane().add(scrollPane_2);
+		 
+		 JTextPane textPane = new JTextPane();
+		    textPane.setEditable(false);
+		    scrollPane_2.setViewportView(textPane);
+		    StyledDocument doc = textPane.getStyledDocument();
+		    DefaultCaret caret = (DefaultCaret) textPane.getCaret();
+		    caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
+		    textPane.setBorder(BorderFactory.createCompoundBorder(
+		        textPane.getBorder(),
+		            BorderFactory.createEmptyBorder(10, 10 ,10 , 10)));
+		    Style bigWord = textPane.addStyle("Style", null);
+		    Style header = textPane.addStyle("Style", null);
+		    StyleConstants.setFontSize(header, 20);
+		    StyleConstants.setFontSize(bigWord, 36);
+		    StyleConstants.setBold(bigWord, true);
+		    
+		    doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+		    doc.insertString(doc.getLength(),"\n" , null );
+		    doc.insertString(doc.getLength(),"Definitions\n" ,header );
+		    doc.insertString(doc.getLength(),"\n" ,null );
+		    doc.insertString(doc.getLength(),"1. Example Word (pos) \n\n    Definition of example word\n\n" ,null );
+		    doc.insertString(doc.getLength(),"\n" ,null );
+		    doc.insertString(doc.getLength(),"Synonyms\n" ,header );
+		    doc.insertString(doc.getLength(),"\n1.Synonym " ,null );
+		    doc.insertString(doc.getLength(),"\n\n" ,null );
+		    doc.insertString(doc.getLength(),"Antonyms\n" ,header );
+		    doc.insertString(doc.getLength(),"\n1.Antonym " ,null );		   
 	}
-
+	
+	
 }
