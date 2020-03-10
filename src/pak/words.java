@@ -21,7 +21,7 @@ public class Words {
 		this.word = word;
 	} 
 	
-	public Definitions[] getDefitions() {
+	public Definitions[] getDefinitions() {
 		return this.definitions;
 	}
 	

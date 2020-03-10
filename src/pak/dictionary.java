@@ -1,26 +1,47 @@
 package pak;
 
 import java.awt.EventQueue;
+import java.awt.Window;
+
 import pak.Definitions;
 import pak.Words;
 
+import java.awt.EventQueue;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.JFrame;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import java.awt.List;
+import javax.swing.JTextPane;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultCaret;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.BorderFactory;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.JRadioButton;
-import javax.swing.JEditorPane;
-import com.google.gson.Gson;
-import pak.Utils;
-import java.awt.ScrollPane;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.util.List;
 
 public class Dictionary {
 
@@ -90,6 +111,7 @@ public class Dictionary {
 		
 		
 		
+		
 		JButton btnAdd = new JButton("Add");
 		btnAdd.setBounds(10, 11, 89, 23);
 		frmDictionary.getContentPane().add(btnAdd);
@@ -104,10 +126,7 @@ public class Dictionary {
 		textField.setColumns(10);
 		
 		
-		List list = new List();
-		list.setBounds(10, 114, 188, 343);
-		frmDictionary.getContentPane().add(list);
-		
+
 		JRadioButton rdbtnAsc = new JRadioButton("Asc");
 		rdbtnAsc.setBounds(20, 83, 63, 23);
 		frmDictionary.getContentPane().add(rdbtnAsc);
@@ -120,7 +139,8 @@ public class Dictionary {
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
+				ItemEvent event;
+				// TODO Auto-generated method st
 	            int state = event.getStateChange();
 	            if (state == ItemEvent.SELECTED) {
 	                System.out.println("desc");
