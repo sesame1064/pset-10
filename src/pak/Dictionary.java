@@ -84,6 +84,18 @@ public class Dictionary {
 	       ;
 	        return  Utils.sortWordsAsc(listOfWords);
 	  }
+	private static ArrayList<Word> getWordClass() throws FileNotFoundException{
+	    Gson gson = new Gson();
+	        String classpathDirectory = Utils.getClasspathDir();
+	        BufferedReader br = new BufferedReader(new FileReader(classpathDirectory + "words.json"));
+	        Word[] words = gson.fromJson(br, Word[].class);
+	        ArrayList<Word> listOfWords = new ArrayList<Word>();
+	        for (Word word : words) {
+	          listOfWords.add(word);
+	        }
+	       ;
+	        return listOfWords;
+	  }
 
 	/**
 	 * Create the application.
