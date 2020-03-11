@@ -608,7 +608,7 @@ public class Dictionary {
     frmDictionary.getContentPane().add(txtSearch);
     txtSearch.setColumns(10);
     
-
+//yuh
 
   }
 }
