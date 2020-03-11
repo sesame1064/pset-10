@@ -410,7 +410,7 @@ public class Dictionary {
       ArrayList<Word> words = getWordClass();
       ArrayList<Word> wordsToRemove = new ArrayList<Word>();
       for(String selectedWord : selectedWords) {
-        for (Words word : words) {
+        for (Word word : words) {
                 if(selectedWord.equals(word.getWord())) {
                   wordsToRemove.add(word);
                   wordFound = true;
@@ -420,7 +420,7 @@ public class Dictionary {
       if(wordFound) {
     	  int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to delete the following word(s)\nfrom the ditionary?\n\nThis action cannot be undone.\n\n","Warning",JOptionPane.YES_NO_OPTION);
     	  if(dialogResult == JOptionPane.YES_OPTION){
-    		  for (Words word: wordsToRemove) {
+    		  for (Word word: wordsToRemove) {
     	          words.remove(word);
     	        }
     	  }
