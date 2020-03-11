@@ -6,12 +6,17 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/amy10/Desktop/APCSA/json.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Users/amy10/Desktop/APCSA/gson-2.8.6.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/amy10/Desktop/APCSA/gson-2.8.6.jar">
+	<classpathentry exported="true" kind="lib" path="C:/Users/amy10/Desktop/APCSA/json.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry combineaccessrules="false" kind="src" path="/other">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
