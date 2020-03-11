@@ -45,6 +45,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Dictionary {
 
@@ -540,8 +542,60 @@ public class Dictionary {
 	            }
 	        }
 
-	    });s
+	    });
+	    txtSearch = new JTextField();
+	    txtSearch.addKeyListener(new KeyAdapter() {
+	        @Override
+//	        search box
+	        public void keyReleased(KeyEvent e) {
+	          String searched = txtSearch.getText().toLowerCase();
+	          System.out.println(searched);
+	          DefaultListModel<String> words = new DefaultListModel<String>();
+	          if (!rdbtnNewRadioButton.isSelected()) {
+	              try {
+	                words = Utils.reverseOrder(getWords());
+	            } catch (FileNotFoundException e2) {
+	              // TODO Auto-generated catch block
+	              e2.printStackTrace();
+	            }
 
+	          } else {
+	            try {
+	              words = getWords();
+	            } catch (FileNotFoundException e1) {
+	              // TODO Auto-generated catch block
+	              e1.printStackTrace();
+	            }
+	          }
+	          DefaultListModel<String> filtered = new DefaultListModel<String>();
+	          for(int i = 0 ; i < words.size(); i++) {
+	            if((words.get(i).startsWith(searched))) {
+	              System.out.println(words.get(i));
+	              filtered.addElement(words.get(i));
+	            }
+	          }
+	          list.setModel(filtered);
+	          try {
+	  			doc.remove(0, doc.getLength());
+	  			doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+	  	        doc.insertString(doc.getLength(),"\n" , null );
+	  	        doc.insertString(doc.getLength(),"Definitions\n" ,header );
+	  	        doc.insertString(doc.getLength(),"\n" ,null );
+	  	        doc.insertString(doc.getLength(),"1. Example Word (pos) \n\n    Definition of example word\n\n" ,null );
+	  	        doc.insertString(doc.getLength(),"\n" ,null );
+	  	        doc.insertString(doc.getLength(),"Synonyms\n" ,header );
+	  	        doc.insertString(doc.getLength(),"\n1.Synonym " ,null );
+	  	        doc.insertString(doc.getLength(),"\n\n" ,null );
+	  	        doc.insertString(doc.getLength(),"Antonyms\n" ,header );
+	  	        doc.insertString(doc.getLength(),"\n1.Antonym " ,null );
+	  		} catch (BadLocationException e1) {
+	  			// TODO Auto-generated catch block
+	  			e1.printStackTrace();
+	  		}
+	        
+
+	        }
+	      });
 	}
 
 }
