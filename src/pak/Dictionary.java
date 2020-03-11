@@ -234,14 +234,14 @@ public class Dictionary {
         textPane.getBorder(),
             BorderFactory.createEmptyBorder(10, 10 ,10 , 10)));
     
-    Style bigWord = textPane.addStyle("Style", null);
+    Style bigLetter = textPane.addStyle("Style", null);
     Style header = textPane.addStyle("Style", null);
     StyleConstants.setFontSize(header, 20);
-    StyleConstants.setFontSize(bigWord, 36);
-    StyleConstants.setBold(bigWord, true);
+    StyleConstants.setFontSize(bigLetter, 36);
+    StyleConstants.setBold(bigLetter, true);
 
     doc.remove(0, doc.getLength());
-    doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+    doc.insertString(doc.getLength(),"Example Word\n" ,bigLetter );
     doc.insertString(doc.getLength(),"\n" , null );
     doc.insertString(doc.getLength(),"Definitions\n" ,header );
     doc.insertString(doc.getLength(),"\n" ,null );
@@ -274,7 +274,7 @@ public class Dictionary {
             for(Word word: Words) {
               if(word.getWord().equals(selectedWord)) {
                 doc.remove(0, doc.getLength());
-                doc.insertString(doc.getLength(),selectedWord.substring(0, 1).toUpperCase() + selectedWord.substring(1) + "\n" ,bigWord );
+                doc.insertString(doc.getLength(),selectedWord.substring(0, 1).toUpperCase() + selectedWord.substring(1) + "\n" ,bigLetter );
                 doc.insertString(doc.getLength(),"\n" ,null );
                 doc.insertString(doc.getLength(),"Definitions\n" ,header );
                 doc.insertString(doc.getLength(),"\n" ,null );
