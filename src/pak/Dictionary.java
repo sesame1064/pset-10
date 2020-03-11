@@ -119,7 +119,7 @@ public class Dictionary {
     frmDictionary = new JFrame();
     frmDictionary.setResizable(false);
     frmDictionary.setTitle("Dictionary");
-    frmDictionary.setBounds(100, 100, 800, 600);
+    frmDictionary.setBounds(100, 100, 804, 609);
     frmDictionary.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frmDictionary.getContentPane().setLayout(null);
 
@@ -138,7 +138,7 @@ public class Dictionary {
     panel_1.setLayout(null);
     
     JLabel lblNewLabel = new JLabel("Word");
-    lblNewLabel.setForeground(Color.BLUE);
+    lblNewLabel.setForeground(Color.BLACK);
     lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 32));
     lblNewLabel.setBounds(10, 11, 184, 54);
     panel_1.add(lblNewLabel);
@@ -150,7 +150,7 @@ public class Dictionary {
     textField.setColumns(10);
     
     JButton btnNewButton_2 = new JButton("Add");
-    btnNewButton_2.setBounds(465, 513, 89, 23);
+    btnNewButton_2.setBounds(449, 491, 89, 23);
     panel_1.add(btnNewButton_2);
     
     JLabel lblDefinitions = new JLabel("Definitions");
@@ -333,7 +333,7 @@ public class Dictionary {
           cardLayout.show(panel, "addWord"); 
       }
     });
-    btnNewButton.setBounds(2, 11, 89, 23);
+    btnNewButton.setBounds(12, 11, 89, 23);
     frmDictionary.getContentPane().add(btnNewButton);
 
     btnNewButton_2.addActionListener(new ActionListener() {
