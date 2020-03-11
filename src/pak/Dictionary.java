@@ -43,6 +43,8 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class Dictionary {
 
@@ -481,6 +483,64 @@ public class Dictionary {
 	    rdbtnNewRadioButton.setBounds(36, 78, 59, 23);
 	    frmDictionary.getContentPane().add(rdbtnNewRadioButton);
 	    rdbtnNewRadioButton.setSelected(true);
+	    
+	    buttonGroup.add(rdbtnNewRadioButton_1);
+	    rdbtnNewRadioButton_1.setBounds(110, 78, 59, 23);
+	    frmDictionary.getContentPane().add(rdbtnNewRadioButton_1);
+	    
+	    rdbtnNewRadioButton_1.addItemListener(new ItemListener() {
+//	       select asc or desc order
+	        @Override
+	        public void itemStateChanged(ItemEvent event) {
+
+	            int state = event.getStateChange();
+	            if (state == ItemEvent.SELECTED) {
+	                System.out.println("desc");
+	                try {
+	                  txtSearch.setText("");
+	            list.setModel(Utils.reverseOrder(getWords()));
+	            doc.remove(0, doc.getLength());
+	            doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+	              doc.insertString(doc.getLength(),"\n" , null );
+	              doc.insertString(doc.getLength(),"Definitions\n" ,header );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"1. Example Word (pos) \n\n    Definition of example word\n\n" ,null );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"Synonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Synonym " ,null );
+	              doc.insertString(doc.getLength(),"\n\n" ,null );
+	              doc.insertString(doc.getLength(),"Antonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Antonym " ,null );
+	          } catch (FileNotFoundException | BadLocationException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	          }
+
+	            } else if (state == ItemEvent.DESELECTED) {
+	              System.out.println("asc");
+	              try {
+	                txtSearch.setText("");
+	            list.setModel(getWords());
+	            doc.remove(0, doc.getLength());
+	            doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+	              doc.insertString(doc.getLength(),"\n" , null );
+	              doc.insertString(doc.getLength(),"Definitions\n" ,header );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"1. Example Word (pos) \n\n    Definition of example word\n\n" ,null );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"Synonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Synonym " ,null );
+	              doc.insertString(doc.getLength(),"\n\n" ,null );
+	              doc.insertString(doc.getLength(),"Antonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Antonym " ,null );
+	          } catch (FileNotFoundException | BadLocationException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	          }
+	            }
+	        }
+
+	    });s
 
 	}
 
