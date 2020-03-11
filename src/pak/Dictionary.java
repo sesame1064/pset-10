@@ -1,58 +1,17 @@
 package pak;
+
 import java.awt.EventQueue;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.JRadioButton;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultCaret;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.BorderFactory;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 
 import javax.swing.JFrame;
 
 public class Dictionary {
 
-	private JFrame frmDictionary;
-	private JTextField txtSearch;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	
 	private JFrame frame;
 
 	/**
 	 * Launch the application.
-	 * @throws FileNotFoundException 
 	 */
-	public static void main(String[] args) throws FileNotFoundException {
-		getWords();
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -64,33 +23,6 @@ public class Dictionary {
 			}
 		});
 	}
-	
-	 private static DefaultListModel<String> getWords() throws FileNotFoundException{
-		    Gson gson = new Gson();
-		        String classpathDirectory = Utils.getClasspathDir();
-		        BufferedReader br = new BufferedReader(new FileReader(classpathDirectory + "words.json"));
-		        Words[] words = gson.fromJson(br, Words[].class);
-		        System.out.println(words.length + " words added");
-		        DefaultListModel<String> listOfWords = new DefaultListModel<String>();
-		        for (Words word : words) {
-		          listOfWords.addElement(word.getWord());
-		        }
-		       ;
-		        return  Utils.sortWordsAsc(listOfWords);
-		  }
-	  @SuppressWarnings("unused")
-	private static ArrayList<Words> getWordClass() throws FileNotFoundException{
-		    Gson gson = new Gson();
-		        String classpathDirectory = Utils.getClasspathDir();
-		        BufferedReader br = new BufferedReader(new FileReader(classpathDirectory + "words.json"));
-		        Words[] words = gson.fromJson(br, Words[].class);
-		        ArrayList<Words> listOfWords = new ArrayList<Words>();
-		        for (Words word : words) {
-		          listOfWords.add(word);
-		        }
-		       ;
-		        return listOfWords;
-		  }
 
 	/**
 	 * Create the application.
@@ -101,113 +33,11 @@ public class Dictionary {
 
 	/**
 	 * Initialize the contents of the frame.
-	 * @throws BadLocationException 
 	 */
-	private void initialize() throws BadLocationException {
-		 frmDictionary = new JFrame();
-		 frmDictionary.setResizable(false);
-		 frmDictionary.setTitle("Dictionary");
-		 frmDictionary.setBounds(100, 100, 800, 600);
-		 frmDictionary.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 frmDictionary.getContentPane().setLayout(null);
-		 
-		 JScrollPane scrollPane_2 = new JScrollPane();
-		 scrollPane_2.setBounds(207, 11, 566, 549);
-		 frmDictionary.getContentPane().add(scrollPane_2);
-		 
-		 JTextPane textPane = new JTextPane();
-		    textPane.setEditable(false);
-		    scrollPane_2.setViewportView(textPane);
-		    StyledDocument doc = textPane.getStyledDocument();
-		    DefaultCaret caret = (DefaultCaret) textPane.getCaret();
-		    caret.setUpdatePolicy(DefaultCaret.NEVER_UPDATE);
-		    textPane.setBorder(BorderFactory.createCompoundBorder(
-		        textPane.getBorder(),
-		            BorderFactory.createEmptyBorder(10, 10 ,10 , 10)));
-		    Style bigWord = textPane.addStyle("Style", null);
-		    Style header = textPane.addStyle("Style", null);
-		    StyleConstants.setFontSize(header, 20);
-		    StyleConstants.setFontSize(bigWord, 36);
-		    StyleConstants.setBold(bigWord, true);
-		    
-		    doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
-		    doc.insertString(doc.getLength(),"\n" , null );
-		    doc.insertString(doc.getLength(),"Definitions\n" ,header );
-		    doc.insertString(doc.getLength(),"\n" ,null );
-		    doc.insertString(doc.getLength(),"1. Example Word (pos) \n\n    Definition of example word\n\n" ,null );
-		    doc.insertString(doc.getLength(),"\n" ,null );
-		    doc.insertString(doc.getLength(),"Synonyms\n" ,header );
-		    doc.insertString(doc.getLength(),"\n1.Synonym " ,null );
-		    doc.insertString(doc.getLength(),"\n\n" ,null );
-		    doc.insertString(doc.getLength(),"Antonyms\n" ,header );
-		    doc.insertString(doc.getLength(),"\n1.Antonym " ,null );		   
-		    
-		    JScrollPane scrollPane_1 = new JScrollPane();
-		    scrollPane_1.setBounds(12, 114, 179, 446);
-		    frmDictionary.getContentPane().add(scrollPane_1);
-		    
-		    JList<String> list = new JList<String>();
-		    list.addListSelectionListener(new ListSelectionListener() {
-		      boolean ranOnce = false;
-		      public void valueChanged(ListSelectionEvent arg0) {
-		        if(ranOnce) {
-		          ranOnce = false;
-		        }else {
-		          ranOnce = true;
-
-		          String selectedWord = list.getSelectedValue();
-		          System.out.println(selectedWord);
-
-		          try {
-		            ArrayList<Words> Words = getWordClass();
-		            for(Words word: Words) {
-		              if(word.getWord().equals(selectedWord)) {
-		                doc.remove(0, doc.getLength());
-		                doc.insertString(doc.getLength(),selectedWord.substring(0, 1).toUpperCase() + selectedWord.substring(1) + "\n" ,bigWord );
-		                doc.insertString(doc.getLength(),"\n" ,null );
-		                doc.insertString(doc.getLength(),"Definitions\n" ,header );
-		                doc.insertString(doc.getLength(),"\n" ,null );
-		                Definitions[] definitions = word.getDefinitions();
-		                int definitionCounter = 1;
-		                for (Definitions definition : definitions) {
-		                  doc.insertString(doc.getLength(), definitionCounter + "." + selectedWord +" (" + definition.getPartOfSpeech() +")\n\n    "  +  definition.getDefinition() + "\n\n", null);
-		                  definitionCounter++;
-		                }
-		                String[] synonyms = word.getSynonyms();
-		                if(synonyms.length != 0) {
-		                  doc.insertString(doc.getLength(),"Synonyms\n" ,header );
-		                  doc.insertString(doc.getLength(),"\n" ,null );
-		                  int synonymCounter = 1;
-		                  for(String synonym : synonyms) {
-
-		                    doc.insertString(doc.getLength(), synonymCounter + "." + synonym + "\n", null);
-		                    synonymCounter++;
-		                  }
-		                }
-		                String[] antonyms = word.getAntonyms();
-		                if (antonyms.length != 0) {
-		                  doc.insertString(doc.getLength(),"\n" ,null );
-		                  doc.insertString(doc.getLength(),"Antonyms\n" ,header );
-		                  doc.insertString(doc.getLength(),"\n" ,null );
-		                  int antonymCounter = 1;
-		                  for(String antonym : antonyms) {
-		                    doc.insertString(doc.getLength(), antonymCounter + "." + antonym + "\n", null);
-		                    antonymCounter++;
-		                  }
-		                }
-
-		              }
-		            }
-		          } catch (FileNotFoundException | BadLocationException e) {
-		            // TODO Auto-generated catch block
-		            e.printStackTrace();
-		          }
-		        }
-		      }
-		    });
-		    scrollPane_1.setViewportView(list);
-
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
-	
+
 }
