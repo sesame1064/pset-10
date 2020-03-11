@@ -390,6 +390,24 @@ public class Dictionary {
 	    		cardLayout.show(panel, "defintions");
 	    	}
 	    });
+	    JButton btnNewButton_1 = new JButton("Remove");
+	    btnNewButton_1.addActionListener(new ActionListener() {
+//	      remove
+	      public void actionPerformed(ActionEvent arg0) {
+	    List<String> selectedWords = list.getSelectedValuesList();
+	        System.out.println("remove");
+	        try {
+	          Boolean wordFound = false;
+	      ArrayList<Word> words = getWordClass();
+	      ArrayList<Word> wordsToRemove = new ArrayList<Word>();
+	      for(String selectedWord : selectedWords) {
+	        for (Word word : words) {
+	                if(selectedWord.equals(word.getWord())) {
+	                  wordsToRemove.add(word);
+	                  wordFound = true;
+	                }
+	            }
+	          }
 	    
 	}
 
