@@ -508,7 +508,7 @@ public class Dictionary {
                   txtSearch.setText("");
             list.setModel(Utils.reverseOrder(getWords()));
             doc.remove(0, doc.getLength());
-            doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+            doc.insertString(doc.getLength(),"Example Word\n" ,bigLetter);
               doc.insertString(doc.getLength(),"\n" , null );
               doc.insertString(doc.getLength(),"Definitions\n" ,header );
               doc.insertString(doc.getLength(),"\n" ,null );
