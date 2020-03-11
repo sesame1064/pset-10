@@ -107,8 +107,9 @@ public class Dictionary {
 	/**
 	 * Initialize the contents of the frame.
 	 * @throws BadLocationException 
+	 * @throws FileNotFoundException 
 	 */
-	private void initialize() throws BadLocationException {
+	private void initialize() throws BadLocationException, FileNotFoundException {
 		frmDictionary = new JFrame();
 	    frmDictionary.setResizable(false);
 	    frmDictionary.setTitle("Dictionary");
@@ -307,6 +308,12 @@ public class Dictionary {
 	        }
 	      }
 	    });
+	    
+	    scrollPane_1.setViewportView(list);
+
+	    DefaultListModel<String> DLM =  getWords();
+
+	    list.setModel(DLM);
 	    
 	}
 
