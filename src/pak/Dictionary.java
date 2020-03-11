@@ -432,6 +432,45 @@ public class Dictionary {
 	      // TODO Auto-generated catch block
 	      e.printStackTrace();
 	    }
+	        DefaultListModel<String> DLM = null;
+	        try {  
+	            if (!rdbtnNewRadioButton.isSelected()) {
+	                try {
+	                	DLM = Utils.reverseOrder(getWords());
+	              } catch (FileNotFoundException e2) {
+	                // TODO Auto-generated catch block
+	                e2.printStackTrace();
+	              }
+
+	            } else {
+	              try {
+	            	  DLM = getWords();
+	              } catch (FileNotFoundException e1) {
+	                // TODO Auto-generated catch block
+	                e1.printStackTrace();
+	              }
+	            }
+	            list.setModel(DLM);
+	            doc.remove(0, doc.getLength());
+	            doc.insertString(doc.getLength(),"Example Word\n" ,bigWord );
+	              doc.insertString(doc.getLength(),"\n" , null );
+	              doc.insertString(doc.getLength(),"Definitions\n" ,header );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"1. Example Word (pos) \n\n    Definition of example word\n\n" ,null );
+	              doc.insertString(doc.getLength(),"\n" ,null );
+	              doc.insertString(doc.getLength(),"Synonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Synonym " ,null );
+	              doc.insertString(doc.getLength(),"\n\n" ,null );
+	              doc.insertString(doc.getLength(),"Antonyms\n" ,header );
+	              doc.insertString(doc.getLength(),"\n1.Antonym " ,null );
+	          } catch (BadLocationException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	          }
+
+	      }
+	    });
+
 	}
 
 }
