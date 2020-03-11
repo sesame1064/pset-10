@@ -41,6 +41,8 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.CardLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Dictionary {
 
@@ -314,6 +316,17 @@ public class Dictionary {
 	    DefaultListModel<String> DLM =  getWords();
 
 	    list.setModel(DLM);
+	    
+	    JRadioButton rdbtnNewRadioButton = new JRadioButton("Asc");
+	    JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Desc");
+	    
+	    JButton btnNewButton = new JButton("Add");
+	    btnNewButton.addActionListener(new ActionListener() {
+	    	 public void actionPerformed(ActionEvent e) {
+	       	  System.out.println("add");
+	             cardLayout.show(panel, "addWord"); 
+	         }
+	       });
 	    
 	}
 
