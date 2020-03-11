@@ -345,7 +345,7 @@ public class Dictionary {
       	  String synonymInput = textField_1.getText().toLowerCase();
       	  String antonymsInput = textField_3.getText().toLowerCase();
       	  
-      	  ArrayList<Words> wordList = new ArrayList<Words>();
+      	  ArrayList<Word> wordList = new ArrayList<Word>();
       	  try {
   			wordList = getWordClass();
       	  } catch (FileNotFoundException e1) {
