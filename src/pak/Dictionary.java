@@ -470,6 +470,17 @@ public class Dictionary {
 
 	      }
 	    });
+	    btnNewButton_1.setBounds(101, 11, 89, 23);
+	    frmDictionary.getContentPane().add(btnNewButton_1);
+
+	    JScrollPane scrollPane = new JScrollPane();
+	    scrollPane.setBounds(490, 332, -57, -98);
+	    frmDictionary.getContentPane().add(scrollPane);
+	   
+	    buttonGroup.add(rdbtnNewRadioButton);
+	    rdbtnNewRadioButton.setBounds(36, 78, 59, 23);
+	    frmDictionary.getContentPane().add(rdbtnNewRadioButton);
+	    rdbtnNewRadioButton.setSelected(true);
 
 	}
 
