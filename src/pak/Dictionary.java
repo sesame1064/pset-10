@@ -355,7 +355,7 @@ public class Dictionary {
 	          	  for (int i = 0; i < definitions.length; i++) {
 	          		  deffs[i] = new Definitions(definitions[i],poss[i]);
 	          	  }
-	          	  Words wordToAdd = new Word(word, deffs, synonyms,antonyms);
+	          	  Word wordToAdd = new Word(word, deffs, synonyms,antonyms);
 	          	  wordList.add(wordToAdd);
 	          	Gson gson = new GsonBuilder().setPrettyPrinting().create();
 	            String classpathDirectory = Utils.getClasspathDir();
@@ -390,6 +390,7 @@ public class Dictionary {
 	    		cardLayout.show(panel, "defintions");
 	    	}
 	    });
+	    
 	    JButton btnNewButton_1 = new JButton("Remove");
 	    btnNewButton_1.addActionListener(new ActionListener() {
 //	      remove
@@ -408,7 +409,29 @@ public class Dictionary {
 	                }
 	            }
 	          }
-	    
+	      if(wordFound) {
+	    	  int dialogResult = JOptionPane.showConfirmDialog (null, "Are you sure you want to delete the following word(s)\nfrom the ditionary?\n\nThis action cannot be undone.\n\n","Warning",JOptionPane.YES_NO_OPTION);
+	    	  if(dialogResult == JOptionPane.YES_OPTION){
+	    		  for (Word word: wordsToRemove) {
+	    	          words.remove(word);
+	    	        }
+	    	  }
+	        
+	        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	        String classpathDirectory = Utils.getClasspathDir();
+	         try (FileWriter writer = new FileWriter(classpathDirectory +"words.json")) {
+	                  gson.toJson(words, writer);
+	                  System.out.println("word removed");
+	              } catch (IOException e) {
+	                  e.printStackTrace( );
+	              }
+
+
+	      }
+	    } catch (FileNotFoundException e) {
+	      // TODO Auto-generated catch block
+	      e.printStackTrace();
+	    }
 	}
 
 }
