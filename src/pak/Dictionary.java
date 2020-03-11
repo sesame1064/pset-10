@@ -46,14 +46,14 @@ import java.awt.event.ActionListener;
 
 public class Dictionary {
 
-	  private JFrame frmDictionary;
-	  private JTextField txtSearch;
-	  private final ButtonGroup buttonGroup = new ButtonGroup();
-	  private JTextField textField;
-	  private JTextField txtDefinitions;
-	  private JTextField textField_2;
-	  private JTextField textField_1;
-	  private JTextField textField_3;
+	private JFrame frmDictionary;
+	private JTextField txtSearch;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JTextField textField;
+	private JTextField txtDefinitions;
+	private JTextField textField_2;
+	private JTextField textField_1;
+	private JTextField textField_3;
 
 
 	/**
@@ -264,8 +264,8 @@ public class Dictionary {
 	          System.out.println(selectedWord);
 
 	          try {
-	            ArrayList<Words> Words = getWordClass();
-	            for(Words word: Words) {
+	            ArrayList<Word> Words = getWordClass();
+	            for(Word word: Words) {
 	              if(word.getWord().equals(selectedWord)) {
 	                doc.remove(0, doc.getLength());
 	                doc.insertString(doc.getLength(),selectedWord.substring(0, 1).toUpperCase() + selectedWord.substring(1) + "\n" ,bigWord );
@@ -326,7 +326,10 @@ public class Dictionary {
 	       	  System.out.println("add");
 	             cardLayout.show(panel, "addWord"); 
 	         }
-	       });
+	      });
+	    btnNewButton.setBounds(2, 11, 89, 23);
+	    frmDictionary.getContentPane().add(btnNewButton);
+
 	    
 	}
 
