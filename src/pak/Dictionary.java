@@ -608,8 +608,7 @@ public class Dictionary {
     frmDictionary.getContentPane().add(txtSearch);
     txtSearch.setColumns(10);
     
-    //notes: don't have a module path
-    //the module path was not neccessary due to it causing more issues. 
+
 
   }
 }
