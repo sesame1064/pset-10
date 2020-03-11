@@ -363,7 +363,7 @@ public class Dictionary {
           	  for (int i = 0; i < definitions.length; i++) {
           		  deffs[i] = new Definitions(definitions[i],poss[i]);
           	  }
-          	  Words wordToAdd = new Words(word, deffs, synonyms,antonyms);
+          	  Word wordToAdd = new Word(word, deffs, synonyms,antonyms);
           	  wordList.add(wordToAdd);
           	Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String classpathDirectory = Utils.getClasspathDir();
@@ -407,8 +407,8 @@ public class Dictionary {
         System.out.println("remove");
         try {
           Boolean wordFound = false;
-      ArrayList<Words> words = getWordClass();
-      ArrayList<Words> wordsToRemove = new ArrayList<Words>();
+      ArrayList<Word> words = getWordClass();
+      ArrayList<Word> wordsToRemove = new ArrayList<Word>();
       for(String selectedWord : selectedWords) {
         for (Words word : words) {
                 if(selectedWord.equals(word.getWord())) {
