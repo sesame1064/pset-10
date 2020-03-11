@@ -138,6 +138,7 @@ public class Dictionary {
     panel_1.setLayout(null);
     
     JLabel lblNewLabel = new JLabel("Word");
+    lblNewLabel.setForeground(Color.BLUE);
     lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 32));
     lblNewLabel.setBounds(10, 11, 184, 54);
     panel_1.add(lblNewLabel);
@@ -606,5 +607,8 @@ public class Dictionary {
     txtSearch.setBounds(12, 45, 179, 20);
     frmDictionary.getContentPane().add(txtSearch);
     txtSearch.setColumns(10);
+    
+    //notes don't have a module path
+
   }
 }
