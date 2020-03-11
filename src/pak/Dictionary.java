@@ -329,7 +329,67 @@ public class Dictionary {
 	      });
 	    btnNewButton.setBounds(2, 11, 89, 23);
 	    frmDictionary.getContentPane().add(btnNewButton);
+	    btnNewButton_2.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    	  String word = textField.getText().toLowerCase();
+	      	  String definitionInput = txtDefinitions.getText().toLowerCase();
+	      	  String posInput = textField_2.getText().toLowerCase();
+	      	  String synonymInput = textField_1.getText().toLowerCase();
+	      	  String antonymsInput = textField_3.getText().toLowerCase();
+	      	  
+	      	  ArrayList<Word> wordList = new ArrayList<Word>();
+	      	  try {
+	  			wordList = getWordClass();
+	      	  } catch (FileNotFoundException e1) {
+	  			// TODO Auto-generated catch block
+	  			e1.printStackTrace();
+	      	  }
+	      	  String[] definitions = definitionInput.split("\\s*,\\s*");
+	      	  String[] poss = posInput.split("\\s*,\\s*");
+	      	  String[] synonyms = synonymInput.split("\\s*,\\s*");
+	      	  String[] antonyms = antonymsInput.split("\\s*,\\s*");
+	      	  
+	      	  if(definitions.length == poss.length) {
+	      		  System.out.println("pass");
+	      		  Definitions[] deffs = new Definitions[definitions.length];
+	          	  for (int i = 0; i < definitions.length; i++) {
+	          		  deffs[i] = new Definitions(definitions[i],poss[i]);
+	          	  }
+	          	  Words wordToAdd = new Word(word, deffs, synonyms,antonyms);
+	          	  wordList.add(wordToAdd);
+	          	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	            String classpathDirectory = Utils.getClasspathDir();
+	             try (FileWriter writer = new FileWriter(classpathDirectory +"words.json")) {
+	                      gson.toJson(wordList, writer);
+	                      System.out.println("word added");
+	                  } catch (IOException e1) {
+	                      e1.printStackTrace( );
+	                  }
+	             DefaultListModel<String> DLM = null;
+	             if (!rdbtnNewRadioButton.isSelected()) {
+				     try {
+				     	DLM = Utils.reverseOrder(getWords());
+				   } catch (FileNotFoundException e2) {
+				     // TODO Auto-generated catch block
+				     e2.printStackTrace();
+				   }
 
+				 } else {
+				   try {
+				 	  DLM = getWords();
+				   } catch (FileNotFoundException e1) {
+				     // TODO Auto-generated catch block
+				     e1.printStackTrace();
+				   }
+				 }
+	             list.setModel(DLM);
+	      	  }else {
+	      		  System.out.println("fail");
+	      		  JOptionPane.showMessageDialog(null, "Amount of definitions and parts of speech do not match!");
+	      	  }
+	    		cardLayout.show(panel, "defintions");
+	    	}
+	    });
 	    
 	}
 
