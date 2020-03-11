@@ -596,6 +596,10 @@ public class Dictionary {
 
 	        }
 	      });
+	    txtSearch.setToolTipText("Search");
+	    txtSearch.setBounds(12, 45, 179, 20);
+	    frmDictionary.getContentPane().add(txtSearch);
+	    txtSearch.setColumns(10);
 	}
 
 }
