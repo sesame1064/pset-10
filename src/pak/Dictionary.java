@@ -245,6 +245,10 @@ public class Dictionary {
 	    doc.insertString(doc.getLength(),"Antonyms\n" ,header );
 	    doc.insertString(doc.getLength(),"\n1.Antonym " ,null );
 	    
+	    JScrollPane scrollPane_1 = new JScrollPane();
+	    scrollPane_1.setBounds(12, 114, 179, 446);
+	    frmDictionary.getContentPane().add(scrollPane_1);
+	    
 	}
 
 }
