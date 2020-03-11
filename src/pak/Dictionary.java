@@ -139,7 +139,7 @@ public class Dictionary {
     
     JLabel lblNewLabel = new JLabel("Word");
     lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 32));
-    lblNewLabel.setBounds(10, 11, 117, 54);
+    lblNewLabel.setBounds(10, 11, 184, 54);
     panel_1.add(lblNewLabel);
     
     textField = new JTextField();
@@ -236,7 +236,6 @@ public class Dictionary {
     Style bigWord = textPane.addStyle("Style", null);
     Style header = textPane.addStyle("Style", null);
     StyleConstants.setFontSize(header, 20);
-//    StyleConstants.setBold(header, true);
     StyleConstants.setFontSize(bigWord, 36);
     StyleConstants.setBold(bigWord, true);
 
