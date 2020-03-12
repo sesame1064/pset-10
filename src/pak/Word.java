@@ -1,48 +1,48 @@
 package pak;
 
 public class Word {
-    private String word;
-    private Definitions[] definitions;
-    private String[] synonyms;
-    private String[] antonyms;
+	private String word;
+	private Definitions[] definitions;
+	private String[] synonyms;
+	private String[] antonyms;
 
-    public Word(String word, Definitions[] definitions, String[] synonyms, String[] antonyms) {
-        this.word = word;
-        this.definitions = definitions;
-        this.synonyms = synonyms;
-        this.antonyms = antonyms;
-    }
+	public Word(String word, Definitions[] definitions, String[] synonyms, String[] antonyms) {
+		this.word = word;
+		this.definitions = definitions;
+		this.synonyms = synonyms;
+		this.antonyms = antonyms;
+	}
 
-    public String getWord() {
-        return this.word;
-    }
+	public String getWord() {
+		return this.word;
+	}
 
-    public void setWord(String word) {
-        this.word = word;
-    }
+	public void setWord(String word) {
+		this.word = word;
+	}
 
-    public Definitions[] getDefinitions() {
-        return this.definitions;
-    }
+	public Definitions[] getDefinitions() {
+		return this.definitions;
+	}
 
-    public void setDefinitions(Definitions[] definitions) {
-        this.definitions = definitions;
-    }
+	public void setDefinitions(Definitions[] definitions) {
+		this.definitions = definitions;
+	}
 
-    public String[] getSynonyms() {
-        return this.synonyms;
-    }
+	public String[] getSynonyms() {
+		return this.synonyms;
+	}
 
-    public void setSynonyms(String[] synonyms) {
-        this.synonyms = synonyms;
-    }
-    public String[] getAntonyms() {
-        return this.antonyms;
-    }
+	public void setSynonyms(String[] synonyms) {
+		this.synonyms = synonyms;
+	}
 
-    public void setAntonyms(String[] antonyms) {
-        this.antonyms = antonyms;
-    }
+	public String[] getAntonyms() {
+		return this.antonyms;
+	}
 
+	public void setAntonyms(String[] antonyms) {
+		this.antonyms = antonyms;
+	}
 
 }
